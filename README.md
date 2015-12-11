@@ -1,4 +1,4 @@
-chebyshevPolynomials
+# chebyshevPolynomials
 
 ===============================
 
@@ -7,18 +7,18 @@ Updated October 28, 2013
 Written by Matthew Kelly
 Cornell University
 
-Functions:
+### Functions:
  - chebyshevFit
  - chebyshevInterpolate
  - chebyshevODEsolve
  - chebyshevDerivative
  - chebyshevIntegral
 
-Helper Functions:
+### Helper Functions:
  - chebyshevPoints
  - chebyshevDifferentiationMatrix
 
-Demonstrations:
+### Demonstrations:
  - DEMO_1_compare
  - DEMO_2_derivatives
  - DEMO_3_nodeDerivatives
@@ -33,4 +33,8 @@ Barycentric Interpolation, which allows for efficient computation and numerical 
 
 I use these approximations for solving ordinary differential equations and in the background of trajectory optimization problems.
 
+
+### References:
+ - Everything here I learned from the textbook by Lloyd N Trefethen, Approximation Theory and Approximation Practice.
+ - He publishes an excellent Matlab library on the topic: <http://www.chebfun.org/>
 
