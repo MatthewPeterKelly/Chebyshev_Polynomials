@@ -1,0 +1,7 @@
+# Matlab Coder Stuff
+*.max*
+codegen/
+
+# Autosave:
+*.m~
+*.asv
