@@ -48,7 +48,7 @@ plot(f_time, f_val, 'r-');
 plot(g_time, g_val, 'b-');
 plot(f_grid, f_knot, 'ro');
 plot(g_grid, g_knot, 'bo');
-axis("equal");
+axis('equal');
 legend('f - function','g - inverse')
 
 % Check the fitting error by functions:
@@ -69,5 +69,3 @@ fprintf('Cheb. Inv. Fit MSE: %6.6e\n',sum(err_fit));
 % Plot the fit:
 plot(g_grid_fit, g_knot_fit, 'kx')
 plot(g_time, g_val_fit, 'k--','LineWidth',2)
-
-
