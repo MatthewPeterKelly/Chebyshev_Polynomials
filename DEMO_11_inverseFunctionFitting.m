@@ -30,10 +30,10 @@ g_domain = f_soln(f_domain);
 % Compute knot points on solution:
 input.userFunc = f_soln;
 input.domain = f_domain;
-[f_knot,~,f_grid] = chebyshevFit(input, order);
+[f_knot,~,~] = chebyshevFit(input, order);
 input.userFunc = g_soln;
 input.domain = g_domain;
-[g_knot,~,g_grid] = chebyshevFit(input, order);
+[g_knot,~,~] = chebyshevFit(input, order);
 
 % Interpolate solutions:
 n_time = 100;
@@ -41,15 +41,6 @@ f_time = linspace(f_domain(1), f_domain(2), n_time);
 f_val = chebyshevInterpolate(f_knot, f_time, f_domain);
 g_time = linspace(g_domain(1), g_domain(2), n_time);
 g_val = chebyshevInterpolate(g_knot, g_time, g_domain);
-
-% Plot the solution and fitting points:
-figure(550); clf; hold on;
-plot(f_time, f_val, 'r-');
-plot(g_time, g_val, 'b-');
-plot(f_grid, f_knot, 'ro');
-plot(g_grid, g_knot, 'bo');
-axis('equal');
-legend('f - function','g - inverse')
 
 % Check the fitting error by functions:
 err_fun = mean(checkInverseFunc(f_soln,g_soln,f_time));
@@ -66,6 +57,14 @@ fprintf('Chebyshev MSE: %6.6e\n',sum(err_cheb));
 g_val_fit = chebyshevInterpolate(g_knot_fit, g_time, g_grid_fit([1,end]));
 fprintf('Cheb. Inv. Fit MSE: %6.6e\n',sum(err_fit));
 
-% Plot the fit:
-plot(g_grid_fit, g_knot_fit, 'kx')
-plot(g_time, g_val_fit, 'k--','LineWidth',2)
+% Plot the solution and fitting points:
+figure(550); clf; hold on;
+plot(f_time, f_val, 'r-','LineWidth',2);
+plot(g_time, g_val, 'g-','LineWidth',2);
+plot(g_time, g_val_fit, 'k--','LineWidth',3)
+plot(f_grid, f_knot, 'ro');
+plot(g_grid, g_knot, 'go');
+plot(g_grid_fit, g_knot_fit, 'kx','MarkerSize',12)
+axis('equal');
+legend('f - function','g - analytic','g - best fit')
+title('Chebyshev function approximation and inverse')
